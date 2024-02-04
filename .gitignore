@@ -1,0 +1,7 @@
+Build/*
+*.obj
+
+Release/*
+*.exe
+
+resources/*
