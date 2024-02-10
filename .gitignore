@@ -1,7 +1,8 @@
-Build/*
+Build/
 *.obj
 
-Release/*
+Release/
+Debug/
 *.exe
 
-resources/*
+resources/
