@@ -4,7 +4,12 @@ add_library(MathLib
     src/adder.cpp
     src/divider.cpp)
 
-target_include_directories(MathLib PUBLIC include)
+target_include_directories(
+    MathLib
+        PUBLIC
+            $<INSTALL_INTERFACE:include>
+            $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+)
 
 install(
     FILES
@@ -16,5 +21,12 @@ install(
 
 install(
     TARGETS MathLib
-    DESTINATION ${CMAKE_INSTALL_PREFIX}/include/MathLib
+    EXPORT MathExport
+    DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/MathLib
+)
+
+install(
+    EXPORT MathExport
+    FILE MathLibConfig.cmake
+    DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/MathLib
 )

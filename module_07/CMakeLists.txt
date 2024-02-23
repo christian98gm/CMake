@@ -13,4 +13,4 @@ target_link_libraries(Calculator PRIVATE ConsoleLib MathLib)
 # Install prefix path
 message(${CMAKE_INSTALL_PREFIX})
 
-# To install (as admin): cmake --install . (from Build\)
+# To install (as admin): cmake --install . --config Debug (works with any previously build profile)

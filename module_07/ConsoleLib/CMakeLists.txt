@@ -4,7 +4,12 @@ add_library(ConsoleLib
     src/printer.cpp
     src/reader.cpp)
 
-target_include_directories(ConsoleLib PUBLIC include)
+target_include_directories(
+    ConsoleLib
+        PUBLIC
+            $<INSTALL_INTERFACE:include>
+            $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+)
 
 install(
     FILES
@@ -16,5 +21,12 @@ install(
 
 install(
     TARGETS ConsoleLib
-    DESTINATION ${CMAKE_INSTALL_PREFIX}/include/ConsoleLib
+    EXPORT ConsoleExport
+    DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/ConsoleLib
+)
+
+install(
+    EXPORT ConsoleExport
+    FILE ConsoleLibConfig.cmake
+    DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/ConsoleLib
 )
